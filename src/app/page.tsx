@@ -9,6 +9,7 @@ import { FaHome } from "react-icons/fa";
 import { FaH } from "react-icons/fa6";
 import Approach from "@/components/Approach";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
          <Clients />
          <Approach />
          <Footer />
+         <ScrollToTop />
+         
       </div>
     </main>
   );
