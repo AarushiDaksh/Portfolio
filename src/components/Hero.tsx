@@ -63,7 +63,7 @@ function Hero() {
 
 
 
-<p>A full-stack developer based in India.</p>
+<p className="mb-10">A full-stack developer based in India.</p>
 
 
 
