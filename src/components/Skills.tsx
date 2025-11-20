@@ -58,7 +58,7 @@ export default function SkillsMarquee() {
       <motion.div
         className="flex space-x-6 whitespace-nowrap"
         animate={{ x: ["0%", "-100%"] }}
-        transition={{ repeat: Infinity, duration: 35, ease: "linear" }}
+        transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
       >
         {[...badges, ...badges].map((b, i) => (
           <img
