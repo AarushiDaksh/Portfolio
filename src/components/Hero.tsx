@@ -4,6 +4,18 @@ import { cn } from "@/lib/utils";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import MagicButton from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
+import { Dancing_Script } from "next/font/google";
+
+const dancing = Dancing_Script({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+});
+
+
+
+
+
+
 
 function Hero() {
   return (
@@ -40,9 +52,20 @@ function Hero() {
 
           />
 
-          <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi, I&apos;m Aryan, A full-stack developer based in India.
-          </p>
+       <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
+  Hi, I&apos;m{" "}
+<span className={`${dancing.className} text-4xl md:text-7xl font-bold`}>
+  Aryan
+</span>
+
+
+</p>
+
+
+
+<p>A full-stack developer based in India.</p>
+
+
 
           <div className="flex gap-12">
             <a href="#about">
