@@ -1,203 +1,137 @@
 "use client";
 import React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
+const phases = [
+  {
+    number: "01",
+    title: "Planning & Strategy",
+    description:
+      "We'll collaborate to map out your project's goals, target audience, and key functionalities. We'll discuss things like site structure, navigation, and content requirements.",
+  },
+  {
+    number: "02",
+    title: "Development & Progress",
+    description:
+      "Once we agree on the plan, I cue my lofi playlist and dive into coding. From initial sketches to polished code, I keep you updated every step of the way.",
+  },
+  {
+    number: "03",
+    title: "Launch",
+    description:
+      "This is where the magic happens! Based on the approved design, I'll translate everything into functional code, building your website from the ground up.",
+  },
+];
 
 const Approach = () => {
   return (
-    <section className="w-full py-20">
-      <h1 className="heading text-2xl">
-        My <span className="text-purple">approach</span>
-      </h1>
-      {/* remove bg-white dark:bg-black */}
-      <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
-        {/* add des prop */}
-        <Card
-          title="Planning & Strategy"
-          icon={<AceternityIcon order="Phase 1" />}
-          des="We'll collaborate to map out your project's goals, target audience, 
-          and key functionalities. We'll discuss things like site structure, 
-          navigation, and content requirements."
+    <section
+      className="w-full py-20"
+      style={{ borderTop: "1px solid #b6b5b5" }}
+    >
+      {/* Heading */}
+      <div style={{ marginBottom: "3.5rem" }}>
+        <p
+          style={{
+            fontFamily: "'Satoshi', sans-serif",
+            fontSize: "0.7rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.25em",
+            color: "#838282",
+            marginBottom: "0.75rem",
+          }}
         >
-          <CanvasRevealEffect
-            animationSpeed={5.1}
-            // add these classed for the border rounded overflowing -> rounded-3xl overflow-hidden
-            containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
-          />
-        </Card>
-        <Card
-          title="Development & Progress Update"
-          icon={<AceternityIcon order="Phase 2" />}
-          des="Once we agree on the plan, I cue my lofi playlist and dive into
-          coding. From initial sketches to polished code, I keep you updated
-          every step of the way."
+          How I work
+        </p>
+        <h1
+          style={{
+            fontFamily: "'Clash Display', sans-serif",
+            fontWeight: 700,
+            letterSpacing: "-0.05em",
+            lineHeight: 0.9,
+            fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
+            color: "#111111",
+          }}
         >
-          <CanvasRevealEffect
-            animationSpeed={3}
-            // change bg-black to bg-pink-900
-            containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
-            colors={[
-              // change the colors of the
-              [255, 166, 158],
-              [221, 255, 247],
-            ]}
-            dotSize={2}
-          />
-          {/* Radial gradient for the cute fade */}
-          {/* remove this one */}
-          {/* <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" /> */}
-        </Card>
-        <Card
-          title="Development & Launch"
-          icon={<AceternityIcon order="Phase 3" />}
-          des="This is where the magic happens! Based on the approved design, 
-          I'll translate everything into functional code, building your website
-          from the ground up."
-        >
-          <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
-            colors={[[125, 211, 252]]}
-          />
-        </Card>
+          My Approach
+        </h1>
+      </div>
+
+      {/* Phase cards */}
+      <div
+        className="grid grid-cols-1 lg:grid-cols-3 gap-px"
+        style={{ backgroundColor: "#b6b5b5" }}
+      >
+        {phases.map((phase, i) => (
+          <motion.div
+            key={phase.number}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.6,
+              delay: i * 0.1,
+              ease: [0.77, 0, 0.175, 1],
+            }}
+            viewport={{ once: true, margin: "-40px" }}
+            style={{
+              backgroundColor: "#f2f2f2",
+              padding: "3rem",
+              display: "flex",
+              flexDirection: "column",
+              cursor: "default",
+              transition: "background-color 0.3s ease",
+            }}
+            whileHover={{ backgroundColor: "#e8e8e8" } as any}
+          >
+            {/* Phase number */}
+            <span
+              style={{
+                fontFamily: "'Clash Display', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "-0.05em",
+                lineHeight: 0.9,
+                fontSize: "5rem",
+                color: "#111111",
+                opacity: 0.12,
+                marginBottom: "2rem",
+                display: "block",
+              }}
+            >
+              {phase.number}
+            </span>
+
+            {/* Title */}
+            <h2
+              style={{
+                fontFamily: "'Clash Display', sans-serif",
+                fontWeight: 700,
+                letterSpacing: "-0.04em",
+                lineHeight: 1.0,
+                fontSize: "1.4rem",
+                color: "#111111",
+                marginBottom: "1rem",
+              }}
+            >
+              {phase.title}
+            </h2>
+
+            {/* Description */}
+            <p
+              style={{
+                fontFamily: "'Satoshi', sans-serif",
+                fontWeight: 500,
+                fontSize: "0.9rem",
+                lineHeight: 1.7,
+                color: "#838282",
+              }}
+            >
+              {phase.description}
+            </p>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 };
 
 export default Approach;
-
-const Card = ({
-  title,
-  icon,
-  children,
-  des,
-}: {
-  title: string;
-  icon: React.ReactNode;
-  children?: React.ReactNode;
-  des: string;
-}) => {
-  const [hovered, setHovered] = React.useState(false);
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      // tap on mobile to toggle
-      onClick={() => setHovered((prev) => !prev)}
-      className="border border-black/20 dark:border-white/20 max-w-sm w-full mx-auto p-4 relative lg:h-140 rounded-3xl flex items-center justify-center"
-      style={{
-        background:
-          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-      }}
-    >
-      {/* corner icons */}
-      <Icon className="absolute h-10 w-10 -top-3 -left-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -bottom-3 -left-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -top-3 -right-3 dark:text-white text-black opacity-30" />
-      <Icon className="absolute h-10 w-10 -bottom-3 -right-3 dark:text-white text-black opacity-30" />
-
-      {/* background effect (CanvasRevealEffect) */}
-      <AnimatePresence>
-        {hovered && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="h-full w-full absolute inset-0"
-          >
-            {children}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {/* content */}
-      <div className="relative z-20 px-10">
-        {/* Phase pill / icon */}
-        <div
-          className={`text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-40 mx-auto flex items-center justify-center transition duration-200
-          ${hovered ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`}
-        >
-          {icon}
-        </div>
-
-        {/* Title */}
-        <h2
-          className={`text-center text-3xl font-bold mt-4 relative z-10 transition duration-200
-          ${hovered ? "opacity-100 -translate-y-2 text-white" : "opacity-0 translate-y-0 text-white/70"}`}
-        >
-          {title}
-        </h2>
-
-        {/* Description */}
-        <p
-          className={`text-sm mt-4 text-center relative z-10 transition duration-200
-          ${hovered ? "opacity-100 -translate-y-2" : "opacity-0 translate-y-0"}`}
-          style={{ color: "#E4ECFF" }}
-        >
-          {des}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-// add order prop for the Phase number change
-const AceternityIcon = ({ order }: { order: string }) => {
-  return (
-    <div>
-      {/* this btn is from https://ui.aceternity.com/components/tailwindcss-buttons border magic */}
-      {/* change rounded-lg, text-purple px-5 py-2 */}
-      {/* remove focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 cuz we don't need to focus */}
-      {/* remove text-sm font-medium h-12 , add font-bold text-2xl */}
-      <button className="relative inline-flex overflow-hidden rounded-full p-px ">
-        <span
-          className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite]
-         bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]"
-        />
-        <span
-          className="inline-flex h-full w-full cursor-pointer items-center 
-        justify-center rounded-full bg-slate-950 px-5 py-2 text-purple backdrop-blur-3xl font-bold text-2xl"
-        >
-          {order}
-        </span>
-      </button>
-    </div>
-    // remove the svg and add the button
-    // <svg
-    //   width="66"
-    //   height="65"
-    //   viewBox="0 0 66 65"
-    //   fill="none"
-    //   xmlns="http://www.w3.org/2000/svg"
-    //   className="h-10 w-10 text-black dark:text-white group-hover/canvas-card:text-white "
-    // >
-    //   <path
-    //     d="M8 8.05571C8 8.05571 54.9009 18.1782 57.8687 30.062C60.8365 41.9458 9.05432 57.4696 9.05432 57.4696"
-    //     stroke="currentColor"
-    //     strokeWidth="15"
-    //     strokeMiterlimit="3.86874"
-    //     strokeLinecap="round"
-    //     style={{ mixBlendMode: "darken" }}
-    //   />
-    // </svg>
-  );
-};
-
-export const Icon = ({ className, ...rest }: any) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      className={className}
-      {...rest}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
-    </svg>
-  );
-};

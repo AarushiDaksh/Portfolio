@@ -1,89 +1,129 @@
 import React from "react";
-import { Spotlight } from "./ui/Spotlight";
-import { cn } from "@/lib/utils";
-import { TextGenerateEffect } from "./ui/TextGenerateEffect";
-import MagicButton from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
-import { Dancing_Script } from "next/font/google";
-
-const dancing = Dancing_Script({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-});
-
-
-
-
-
-
 
 function Hero() {
   return (
-    <div className="pb-20 pt-36">
-      <div>
-        <Spotlight
-          className="-top-40 -left-10 md:-left-32 md:top-20 h-screen"
-          fill="white"
-        />
-        <Spotlight
-          className="top-10 left-full h-[80vh] w-[50vw]"
-          fill="pruple"
-        />
-        <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
+    <div className="min-h-screen flex flex-col justify-center pt-28 pb-20">
+      {/* Kicker label */}
+      <p
+        style={{
+          fontFamily: "'Satoshi', sans-serif",
+          fontWeight: 500,
+          fontSize: "0.75rem",
+          textTransform: "uppercase",
+          letterSpacing: "0.3em",
+          color: "#838282",
+          marginBottom: "2.5rem",
+        }}
+      >
+        More than just a developer
+      </p>
+
+      {/* Echo headline */}
+      <h1
+        className="echo-text"
+        style={{
+          fontFamily: "'Clash Display', sans-serif",
+          fontWeight: 700,
+          letterSpacing: "-0.05em",
+          lineHeight: 0.9,
+          fontSize: "clamp(4rem, 13vw, 11rem)",
+          color: "#111111",
+        }}
+      >
+        Building
+        <br />
+        the Future.
+      </h1>
+
+      {/* Name + bio */}
+      <div style={{ marginTop: "3rem", maxWidth: "36rem" }}>
+        <p
+          style={{
+            fontFamily: "'Satoshi', sans-serif",
+            fontWeight: 500,
+            fontSize: "clamp(1.25rem, 3vw, 1.75rem)",
+            color: "#111111",
+            marginBottom: "0.5rem",
+          }}
+        >
+          Hi, I&apos;m{" "}
+          <span
+            style={{
+              fontFamily: "'Clash Display', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "-0.05em",
+              fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+            }}
+          >
+            Aryan
+          </span>
+        </p>
+        <p
+          style={{
+            fontFamily: "'Satoshi', sans-serif",
+            fontWeight: 500,
+            color: "#838282",
+            fontSize: "1rem",
+          }}
+        >
+          A full-stack developer based in India.
+        </p>
       </div>
-      <div className="flex h-screen w-full items-center justify-center bg-black-100 bg-grid-white/[0.03] bg-grid-black-100/[0.2] absolute top-0 left-0">
+
+      {/* CTAs */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "1rem",
+          marginTop: "3rem",
+        }}
+      >
+        <a href="#about" className="swiss-btn">
+          My Work
+          <FaLocationArrow style={{ fontSize: "0.75rem" }} />
+        </a>
+        <a
+          href="https://drive.google.com/file/d/1qWwMwiZvji-brkFQ_Q0QsAi32PxtDmBb/view?usp=drive_link"
+          className="swiss-btn swiss-btn--outline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Resume
+          <FaLocationArrow style={{ fontSize: "0.75rem" }} />
+        </a>
+      </div>
+
+      {/* Scroll indicator */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "2.5rem",
+          left: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: "0.75rem",
+        }}
+      >
         <div
-          className={cn(
-            "absolute inset-0",
-            "bg-size-[40px_40px]",
-            "bg-[linear-gradient(to_right,#262626_1px,transparent_1px),linear-gradient(to_bottom,#262626_1px,transparent_1px)]"
-          )}
+          style={{
+            width: "2rem",
+            height: "1px",
+            backgroundColor: "#b6b5b5",
+          }}
         />
-        <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black-100 mask-[radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-      </div>
-      <div className="flex justify-center relative my-20 z-10 ">
-        <div className="max-w-{89w} md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <h2 className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            More than just a developer.
-          </h2>
-          <TextGenerateEffect
-          className="text-center text-[40px] md:text-5xl lg:text-6xl text-white"
-          words="Building the Future."
-
-          />
-
-       <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-  Hi, I&apos;m{" "}
-<span className={`${dancing.className} text-4xl md:text-7xl font-bold`}>
-  Aryan
-</span>
-
-
-</p>
-
-
-
-<p className="mb-10">A full-stack developer based in India.</p>
-
-
-
-          <div className="flex gap-12">
-            <a href="#about">
-              <MagicButton
-                title="My Work"
-                icon={<FaLocationArrow />}
-                position="right"
-              />
-            </a>
-            <a href="https://drive.google.com/file/d/1Qbfcaj3KIQlaLZoU1p21YMbSMQFscCQB/view?usp=drive_link">
-              <MagicButton
-                title="Resume"
-                icon={<FaLocationArrow />}
-                position="right"
-              />
-            </a>
-          </div>
-        </div>
+        <span
+          style={{
+            fontFamily: "'Satoshi', sans-serif",
+            fontSize: "0.65rem",
+            textTransform: "uppercase",
+            letterSpacing: "0.2em",
+            color: "#b6b5b5",
+          }}
+        >
+          Scroll
+        </span>
       </div>
     </div>
   );

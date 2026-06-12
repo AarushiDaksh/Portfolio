@@ -49,29 +49,60 @@ const badges = [
 
 export default function SkillsMarquee() {
   return (
-    <section id='skills'>
-    <div className="w-full overflow-hidden py-8 select-none mb-12">
-      <h1 className="heading mb-12">
-        My <span className="text-purple">Skills</span>
-      </h1>
-
-      <motion.div
-        className="flex space-x-6 whitespace-nowrap"
-        animate={{ x: ["0%", "-100%"] }}
-        transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
+    <section id="skills" style={{ borderTop: "1px solid #b6b5b5" }}>
+      <div
+        className="w-full overflow-hidden py-16 select-none"
+        style={{ backgroundColor: "#f2f2f2" }}
       >
-        {[...badges, ...badges].map((b, i) => (
-          <img
-            key={i}
-            alt={b.label}
-            className="h-10 md:h-12"
-            src={`https://img.shields.io/badge/${encodeURIComponent(
-              b.label
-            )}-${b.color}?style=for-the-badge&logo=${b.logo}&logoColor=white`}
-          />
-        ))}
-      </motion.div>
-    </div>
+        {/* Section heading */}
+        <div style={{ marginBottom: "3rem" }}>
+          <p
+            style={{
+              fontFamily: "'Satoshi', sans-serif",
+              fontSize: "0.7rem",
+              textTransform: "uppercase",
+              letterSpacing: "0.25em",
+              color: "#838282",
+              marginBottom: "0.75rem",
+            }}
+          >
+            What I work with
+          </p>
+          <h1
+            style={{
+              fontFamily: "'Clash Display', sans-serif",
+              fontWeight: 700,
+              letterSpacing: "-0.05em",
+              lineHeight: 0.9,
+              fontSize: "clamp(2rem, 5vw, 3.5rem)",
+              color: "#111111",
+            }}
+          >
+            My Skills
+          </h1>
+        </div>
+
+        {/* Marquee */}
+        <div style={{ overflow: "hidden" }}>
+          <motion.div
+            className="flex space-x-6 whitespace-nowrap"
+            animate={{ x: ["0%", "-100%"] }}
+            transition={{ repeat: Infinity, duration: 28, ease: "linear" }}
+          >
+            {[...badges, ...badges].map((b, i) => (
+              <img
+                key={i}
+                alt={b.label}
+                className="h-8 md:h-10"
+                src={`https://img.shields.io/badge/${encodeURIComponent(
+                  b.label
+                )}-${b.color}?style=for-the-badge&logo=${b.logo}&logoColor=white`}
+                style={{ opacity: 0.85 }}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </div>
     </section>
   );
 }

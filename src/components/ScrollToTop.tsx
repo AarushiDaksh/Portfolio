@@ -36,16 +36,12 @@ export default function ScrollToTop() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.3 }}
-          className="
-            fixed bottom-8 right-8 z-9999
-            bg-white/10 backdrop-blur-xl 
-            p-3 rounded-full 
-            border border-white/20 
-            hover:bg-white/20 
-            shadow-lg 
-            text-white 
-            cursor-pointer
-          "
+          className="fixed bottom-8 left-4 md:left-auto md:right-8 z-[9999] flex items-center justify-center p-3 cursor-pointer"
+          style={{
+            backgroundColor: "#111111",
+            color: "#f2f2f2",
+            border: "1.5px solid #111111",
+          }}
         >
           <FaArrowUp className="text-xl" />
         </motion.button>
